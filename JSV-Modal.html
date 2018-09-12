@@ -1,0 +1,275 @@
+</body>
+
+</html>
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .fwv-modal-container {
+            display: grid;
+            grid-template-columns: 1fr 25px 25px;
+            grid-template-rows: .25fr minmax(1fr, 2fr) .25fr;
+            grid-gap: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 1rem 1rem;
+            width: 24rem;
+            border-radius: 0.5rem;
+        }
+
+        .fwv-modal {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.1);
+            transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+        }
+
+        .fwv-modal-header {
+            grid-row: 1 / 2;
+            grid-column: 1 / 4;
+            justify-self: left;
+            align-self: center;
+        }
+
+        .fwv-modal-content {
+            grid-column: 1 / 4;
+            grid-row: 2 / 3;
+            border-top: solid 1px #E5E5E5;
+            border-bottom: solid 1px #E5E5E5;
+            padding: 10px 0;
+        }
+
+        .fwv-modal-section-buttons {
+            grid-column: 1 / 4;
+            grid-row: 3 / 4;
+            justify-self: right;
+            padding-top: 20px
+        }
+
+        .fwv-header-button {
+            justify-self: right;
+            align-self: flex-start;
+            width: 1.5rem;
+            line-height: 1.5rem;
+            text-align: center;
+            border-radius: 0.25rem;
+            background-color: lightgray;
+        }
+
+        .fwv-header-button:hover {
+            background-color: darkgray;
+        }
+
+        .fwv-close-button {
+            grid-row: 1 / 2;
+            grid-column: 3 / 4;
+        }
+
+        .fwv-move-button {
+            grid-row: 1 / 2;
+            grid-column: 2 / 3;
+            cursor: move;
+        }
+
+        .fwv-show-modal {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1.0);
+            transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+        }
+
+        .fwv-btn-group-modal button {
+            background-color: #F5F5F5;
+            /* border: 2px solid #7f7f7f; */
+            color: #7f7f7f;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 5px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .fwv-btn-group-modal button:hover {
+            background-color: rgb(231, 230, 230);
+        }
+
+        .testt {
+            width: 100%;
+            height: 100px;
+            ;
+            background-color: red;
+            position: absolute;
+            float: none;
+        }
+
+        .s {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            vertical-align: middle !important;
+        }
+    </style>
+</head>
+
+<body>
+    <button id='idModal'>View modal</button>
+</body>
+
+</html>
+
+<script type='text/javascript'>
+
+    document.querySelector("#idModal").addEventListener('click', () => {
+        fwvModal([], "", '')
+        fwvModal([{ class: 's', value: 'First', content: 'Primero', img: "https://cdn4.iconfinder.com/data/icons/gnome-desktop-icons-png/PNG/32/Gnome-X-Office-Drawing-32.png" }, 'Btn2'],
+            "Test",
+            'TEST2',
+            (e) => alert(e));
+    });
+
+    /**
+    * GLOBAL VARIABLES
+    */
+
+    let fwvModalVariables = {};
+
+	/**
+	 * Call a modal dialog in the body of the current HTML document. Remember include in the <head> the meta <meta charset="UTF-8">.
+	 * Only will display a dialog per time. If you require add another dialog the function will remove all others before tries to render a new one.
+	 *
+	 * @author: Michael Bolanos
+	 *
+	 * @param {array} buttons An array with the options to show to the user. You can send a JSON with {class, value, content, img}.
+	 * @param {string} header Header to show in the dialog. You can send a JSON with {class, content}
+	 * @param {string} message Message of the dialog (you can send anything in the message content, like divs, iframe or any kind of content).
+	 * 		Accepts a JSON with {class, content}
+	 * @param {function} callback function that's send the option selected by the user.
+	 */
+    function fwvModal(buttons, header, message, callback) {
+        let modal = document.querySelector('.fwv-modal');
+        if (modal != null) modal.remove();
+
+        if (typeof (header) == "string")
+            header = { class: "", content: header };
+
+        if (typeof (message) == "string")
+            message = { class: "", content: message };
+
+        let htmlButtons = "";
+
+        buttons.forEach(element => {
+            if (typeof (element) == "string")
+                element = { class: "", img: "", value: element, content: element };
+
+            if (element.img == "")
+                htmlButtons += `<button fwv-value='${element.value}' class='${element.class}'>${element.content}</button>`;
+            else
+                htmlButtons +=
+                    `<button fwv-value='${element.value}' class='${element.class}'>
+            <div style='display:flex;align-items:center;'>
+              <img src="${element.img}">
+              <span>${element.content}</span>
+            </div>
+          </button>`;
+        });
+
+        // Multiples ways to render a cross symbol
+        // https://en.wikipedia.org/wiki/X_mark
+
+        let htmlString = `<div class="fwv-modal fwv-show-modal">
+        
+  <div class="fwv-modal-container">
+    <div class='fwv-modal-header ${header.class}'>${header.content}</div>
+    <span class="fwv-header-button fwv-move-button">⁜</span>
+		<span class="fwv-header-button fwv-close-button">🗙</span>
+    <div class="fwv-modal-content ${message.class}">${message.content}</div>
+    <div class="fwv-modal-section-buttons">
+      <div class='fwv-btn-group-modal'>
+        ${htmlButtons}
+      </div>
+    </div>
+  </div>
+</div>`;
+
+        // APPEND THE MODAL INFO INTO THE HTML BODY
+        document.querySelector('body').insertAdjacentHTML("afterbegin", htmlString);
+
+        // GET SELECTORS
+        fwvModalVariables.$main = document.querySelector(".fwv-modal");
+        document.querySelector(".fwv-close-button").click(fwvModalTogglePrivate);
+
+        window.addEventListener("dblclick", (e) => {
+            if (event.target === fwvModalVariables.$main) fwvModalTogglePrivate();
+        });
+
+        document.querySelectorAll(".fwv-btn-group-modal button").forEach(e => e.addEventListener('click', fwvModalTogglePrivate));
+
+        fwvModalDragPrivate();
+    }
+
+    function fwvModalTogglePrivate(e) {
+        fwvModalVariables.$main.classList.toggle("fwv-show-modal");
+        document.querySelector('.fwv-modal').remove();
+
+        if (e != undefined && e.currentTarget.tagName == 'BUTTON' && typeof (callback) == 'function')
+            callback(e.srcElement.getAttribute('fwv-value'));
+    }
+
+    function fwvModalDragPrivate() {
+        fwvModalVariables.$modal = document.querySelector('.fwv-modal-container');
+        fwvModalVariables.$modal.style.position = 'relative';
+
+        document.querySelector('.fwv-move-button').addEventListener('mousedown', (e) => {
+            // console.log('Modal move - On');
+            
+            fwvModalVariables.X = e.srcElement.offsetLeft + 11;
+            fwvModalVariables.Y = e.srcElement.offsetTop + 11;
+            document.addEventListener('mousemove', fwvModalMovePrivate);
+            document.addEventListener('mouseup', fwvModalMoveCancelPrivate);
+        });
+    }
+
+    function fwvModalMovePrivate(e) {
+        try {
+            // console.log('Modal move!')
+
+            if (window.getSelection) {
+                if (window.getSelection().empty) {  // Chrome
+                    window.getSelection().empty();
+                } else if (window.getSelection().removeAllRanges) {  // Firefox
+                    window.getSelection().removeAllRanges();
+                }
+            } else if (document.selection) {  // IE?
+                document.selection.empty();
+            }
+
+            fwvModalVariables.$modal.style.transform = "none";
+
+            fwvModalVariables.$modal.style.left = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - fwvModalVariables.X;
+            fwvModalVariables.$modal.style.top = e.clientY + document.body.scrollTop + document.documentElement.scrollTop - fwvModalVariables.Y;
+        } catch (error) {
+            debugger;
+        }
+    }
+
+    function fwvModalMoveCancelPrivate() {
+        document.removeEventListener('mousemove', fwvModalMovePrivate);
+        document.removeEventListener('mouseup', fwvModalMoveCancelPrivate);
+        // console.log('Modal move - Off');
+    }
+
+
+</script>
