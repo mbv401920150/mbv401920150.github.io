@@ -5,7 +5,7 @@ class fwvSelectMultiple {
 			let html = `<div id='${id}' style='width: ${width}'>
 				<div class='fwv-multipleSelectContent'>
 					<input type='text' class='fwv-multipleContent' readonly>
-					<div class='btnOptions'><i class="fas fa-angle-down fa-lg"></i></div>
+					<div class='fwv-multipleSelectOptions'><i class="fas fa-angle-down fa-lg"></i></div>
 				</div>
 			</div>`;
 
@@ -15,7 +15,7 @@ class fwvSelectMultiple {
 			this.values = values;
 			this.$parent = document.querySelector(`#${id}`);
 			this.$txtContent = document.querySelector(`#${id} div .fwv-multipleContent`);
-			this.$btnOptions = document.querySelector(`#${id} div .btnOptions`);
+			this.$btnOptions = document.querySelector(`#${id} div .fwv-multipleSelectOptions`);
 			this.$btnOptions.onclick = this.show.bind(this);
 		}
 
