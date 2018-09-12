@@ -17,9 +17,10 @@
 	}
 	
 	.fwv-mutipleSelectOptionContainer > hr {
-		height: 0;
+		height: 0 !important;
+		margin: 0 !important;
 	}
-	
+
 	.fwv-multipleContent {
 		border: none;
 		padding-left: 5px;
