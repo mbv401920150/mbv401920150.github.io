@@ -37,9 +37,9 @@ class fwvSelectMultiple {
 
 			htmlContent = `<input class="fwv-opt-all" type="checkbox" ${isCheckedAll} value="Select all">Select all</input><hr/> ${htmlContent}`;
 
-			this.$parent.insertAdjacentHTML('beforeEnd', `<div class="cmbOptions">${htmlContent}</div>`);
+			this.$parent.insertAdjacentHTML('beforeEnd', `<div class="fwv-mutipleSelectOptionContainer">${htmlContent}</div>`);
 
-			this.$cmbOptions = document.querySelector(`#${this.id} .cmbOptions`);
+			this.$cmbOptions = document.querySelector(`#${this.id} .fwv-mutipleSelectOptionContainer`);
 			this.$optAll = document.querySelector(`#${this.id} .fwv-opt-all`);
 			this.$optsSingle = document.querySelectorAll(`#${this.id} .fwv-opt`);
 
