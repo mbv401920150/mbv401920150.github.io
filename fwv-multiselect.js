@@ -3,7 +3,7 @@ class fwvSelectMultiple {
 			width = width == undefined ? '200px' : width;
 
 			let html = `<div id='${id}' style='width: ${width}'>
-				<div class='content'>
+				<div class='fwv-multipleSelectContent'>
 					<input type='text' class='fwv-multipleContent' readonly>
 					<div class='btnOptions'><i class="fas fa-angle-down fa-lg"></i></div>
 				</div>
