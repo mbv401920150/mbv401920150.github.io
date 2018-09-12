@@ -101,5 +101,6 @@ class fwvSelectMultiple {
 
 			this.$optAll.checked = selectAll;
 			this.$txtContent.value = values.substring(0, values.length - 1);
+			this.valuesSelected = this.$txtContent.value;
 		}
 	};
