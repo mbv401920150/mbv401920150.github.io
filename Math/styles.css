@@ -1,9 +1,9 @@
 body {
-			font-family: "open sans";
+			font-family: "open sans", 'Verdana', 'Helvetica';
 		}
 
 		label{
-			font-family: "Consolas";
+			font-family: "Consolas", "monospace";
 		}
 
 		i {
