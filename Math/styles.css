@@ -39,6 +39,21 @@ body {
 	position: relative;
 }
 
+.RB-question {
+	padding: 4px 0
+}
+
+.RB-input
+{
+	border: none;
+	border-bottom: 1px solid grey;
+}
+
+.RB-multipleAnswers
+{
+	display: contents;
+}
+
 .gridSU
 {
 	display: grid;

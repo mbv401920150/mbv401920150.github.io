@@ -1,5 +1,8 @@
 {
-	"Intro": ["Departamento de Matemáticas" , "Nivel Cindea Final"],
+	"Intro": [
+		"Departamento de Matemáticas",
+		"Nivel Cindea Final"
+	],
 	"Titulo": "Práctica Trigonometría",
 	"ImagenPagina": "img/mep.png",
 	"SeleccionUnica": [
@@ -54,9 +57,9 @@
 			"Respuesta": "b",
 			"Nota": 10
 		},
-{
+		{
 			"Indice": 5,
-			"Pregunta": "De acuerdo con los datos de la figura, la altura del árbol corresponde a",
+			"Pregunta": "De acuerdo con los datos de la figura, la altura del árbol corresponde a:",
 			"Opciones": [
 				"47,49",
 				"16,78",
@@ -69,7 +72,7 @@
 		},
 		{
 			"Indice": 6,
-			"Pregunta": "Sea un triángulo rectángulo con α como ángulo agudo. Si sen⁡ α=7/25, entonces cos⁡α corresponde a",
+			"Pregunta": "Sea un triángulo rectángulo con α como ángulo agudo. Si sen⁡ α=7/25, entonces cos⁡α corresponde a:",
 			"Opciones": [
 				"24/25",
 				"7/24",
@@ -94,7 +97,7 @@
 		},
 		{
 			"Indice": 8,
-			"Pregunta": "De acuerdo con los datos de la figura, la distancia x corresponde a",
+			"Pregunta": "De acuerdo con los datos de la figura, la distancia x corresponde a:",
 			"Opciones": [
 				"1046,06",
 				"821,78",
@@ -109,25 +112,77 @@
 	"RespuestaBreve": [
 		{
 			"Indice": 1,
-			"Pregunta": "Pregunta breve?",
-			"Respuesta": "ABC",
-			"Nota": 10
-		}
-	],
-	"Desarrollo": [
-		{
-			"Indice": 1,
-			"Pregunta": "Contenido",
-			"Respuestas": [
+			"Descripcion": "Tomando en cuenta los datos de la figura, complete los espacios en blanco con lo que se le solicita en cada caso:",
+			"Imagen": "./img/rb1.png",
+			"Preguntas": [
 				{
-					"Pregunta": "",
-					"Respuesta": "",
-					"Nota": ""
+					"Pregunta": "El lado x mide aproximadamente: ",
+					"Respuesta": [
+						"14,83"
+					],
+					"Nota": 2.5
 				},
 				{
-					"Pregunta": "",
-					"Respuesta": "",
-					"Nota": ""
+					"Pregunta": "El lado y mide aproximadamente: ",
+					"Respuesta": [
+						"8,71"
+					],
+					"Nota": 2.5
+				},
+				{
+					"Pregunta": "tan (36) corresponde a: ",
+					"Respuesta": [
+						"0,72"
+					],
+					"Nota": 2.5
+				},
+				{
+					"Pregunta": "sen (36) corresponde a: ",
+					"Respuesta": [
+						"0,58"
+					],
+					"Nota": 2.5
+				}
+			]
+		},
+		{
+			"Indice": 2,
+			"Descripcion": "Queremos fijar un poste de 3,5 m de altura, con un cable que va desde el extremo superior del poste al suelo. Desde ese punto del suelo se ve el poste bajo un ángulo de 40:",
+			"Preguntas": [
+				{
+					"Pregunta": "¿A qué distancia del poste sujetaremos el cable? ",
+					"Respuesta": [
+						"4,17"
+					],
+					"Nota": 2.5
+				},
+				{
+					"Pregunta": "¿Cuál es la longitud del cable? ",
+					"Respuesta": [
+						"5,44"
+					],
+					"Nota": 2.5
+				}
+			]
+		},
+		{
+			"Indice": 3,
+			"Descripcion": "Las diagonales de un rombo miden 10 y 14 cm, respectivamente...",
+			"Preguntas": [
+				{
+					"Pregunta": "Calcula el lado del rombo: ",
+					"Respuesta": [
+						"√74"
+					],
+					"Nota": 2.5
+				},
+				{
+					"Pregunta": "Cuales es son sus ángulos? ",
+					"Respuesta": [
+						"54,46",
+						"35,54"
+					],
+					"Nota": 2.5
 				}
 			]
 		}
