@@ -1,0 +1,84 @@
+{
+	"Intro": ["Departamento de Matemáticas" , "Nivel Cindea Final"],
+	"Titulo": "Práctica Trigonometría",
+	"ImagenPagina": "img/mep.png",
+	"SeleccionUnica": [
+		{
+			"Indice": 1,
+			"Pregunta": "De acuerdo con la figura, el sen β corresponde a:",
+			"Opciones": [
+				"5/4",
+				"4/5",
+				"3/5",
+				"4/3"
+			],
+			"Imagen": "./img/su1.png",
+			"Respuesta": "1",
+			"Nota": 10
+		},
+		{
+			"Indice": 2,
+			"Pregunta": "Con base en la figura de la derecha, el cos ⁡δ corresponde a:",
+			"Opciones": [
+				"1/2",
+				"2/5",
+				"√2/2",
+				"√2"
+			],
+			"Imagen": "./img/su2.png",
+			"Respuesta": "1",
+			"Nota": 10
+		},
+		{
+			"Indice": 3,
+			"Pregunta": "Sea un triángulo rectángulo con β como ángulo agudo. Si tan⁡ β = 12/5 , entonces sen β corresponde a:",
+			"Opciones": [
+				"5/13",
+				"5/12",
+				"12/13",
+				"13/5"
+			],
+			"Respuesta": "1",
+			"Nota": 10
+		},
+		{
+			"Indice": 4,
+			"Pregunta": "De acuerdo con los datos de la figura, la distancia del barco a la cúspide del faro corresponde a:",
+			"Opciones": [
+				"62,60",
+				"83,08",
+				"37,67",
+				"13,05"
+			],
+			"Imagen": "./img/su4.png",
+			"Respuesta": "1",
+			"Nota": 10
+		}
+	],
+	"RespuestaBreve": [
+		{
+			"Indice": 1,
+			"Pregunta": "Pregunta breve?",
+			"Respuesta": "ABC",
+			"Nota": 10
+		}
+	],
+	"Desarrollo": [
+		{
+			"Indice": 1,
+			"Pregunta": "Contenido",
+			"Respuestas": [
+				{
+					"Pregunta": "",
+					"Respuesta": "",
+					"Nota": ""
+				},
+				{
+					"Pregunta": "",
+					"Respuesta": "",
+					"Nota": ""
+				}
+			]
+		}
+	]
+}
