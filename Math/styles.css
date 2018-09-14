@@ -3,7 +3,7 @@ body {
 		}
 
 		label{
-			font-family: "Consolas", "monospace";
+			font-family: "Consolas", "Courier new", "monospace";
 		}
 
 		i {
@@ -17,10 +17,11 @@ body {
 .imgSU /* SELECCION UNICA */
 {
 	grid-column-start: 3;
+	align-self: center;
 }
 
 .SU-opt {
-	padding: 4px 0
+	padding: 5px 0
 }
 
 .SU-incorrect {
@@ -36,7 +37,6 @@ body {
 	display: inline-grid;
 	justify-content: center;
 	position: relative;
-	align-content: center;
 }
 
 .gridSU
@@ -46,10 +46,16 @@ body {
 	grid-gap: 2em;
 }
 
+.gridSU-options
+{
+	display: grid;
+	align-content: space-around !important;
+}
+
 		#main {
 			display: grid;
 			grid-template-columns: 1fr 14fr 1fr;
-			grid-gap: 2em;
+			grid-gap: 1em;
 		}
 
 		.allContent {
@@ -59,7 +65,7 @@ body {
 		#container {
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr 1fr;
-			grid-gap: 2em;
+			grid-gap: 1em;
 		}
 
 		.title {

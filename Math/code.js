@@ -15,7 +15,7 @@ let SeleccionUnica = React.createClass({
 		return <div>
 			<p>{this.props.questionIndex}. {this.props.question}</p>
 			<div className='gridSU'>
-				<div>{this.props.options.map(this.eachOption)}</div>
+				<div className='gridSU-options'>{this.props.options.map(this.eachOption)}</div>
 				<i className={this.state.isCorrectFormat}></i>
 				{img}
 			</div>
