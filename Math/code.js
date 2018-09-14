@@ -1,78 +1,92 @@
-
-var DishElement = React.createClass({
+let SeleccionUnica = React.createClass({
 	getInitialState() {
 		return {
-			heart: Boolean(this.props.heart),
-			editing: false
-		};
-	},
-	handleLike() {
-		this.setState({ heart: !this.state.heart });
-		console.log(this.props.name);
-		this.state.heart != this.state.heart;
-	},
-	editDish() {
-		this.setState({ editing: true });
-	},
-	removeDish() {
-		this.props.onRemove(this.props.index);
-	},
-	acceptEdit() {
-		this.props.onChange(this.refs.newName.value, this.props.index);
-		this.setState({ editing: false });
-	},
-	cancelEdit() {
-		this.setState({ editing: false });
-	},
-	showContent() {
-		return <div className='food-container'>
-			<div><b>Food:</b> {this.props.name}</div>
-			<p><b>Origin country:</b> {this.props.children} </p>
-			<div>
-				<input
-					type='checkbox'
-					defaultChecked={this.state.heart}
-					onChange={this.handleLike}
-					className={(this.state.heart ? "heart" : "heartBlack")}>
-				</input>
-				<div className='dishOptions'>
-					<div onClick={this.editDish}>✏️</div>
-					<div onClick={this.removeDish}>️🗑️</div>
-				</div>
-			</div>
-		</div>;
-	},
-	showEdit() {
-		return <div className='food-container'>
-			<input
-				ref='newName'
-				type='text'
-				defaultValue={this.props.name}
-				placeholder='Include the new name'>
-			</input>
-			<div className='dishOptions'>
-				<div onClick={this.cancelEdit}>❌</div>
-				<div onClick={this.acceptEdit}>✔️</div>
-			</div>
-		</div>;
+			isCorrectFormat: '',
+			isCorrect: false,
+			canValidate: true
+		}
 	},
 	render() {
-		if (!this.state.editing)
-			return this.showContent();
+		let img;
+
+		if (this.props.imgUrl != undefined)
+			img = <img className='imgSU' src={this.props.imgUrl}></img>
+
+		return <div>
+			<p>{this.props.questionIndex}. {this.props.question}</p>
+			<div className='gridSU'>
+				<div>{this.props.options.map(this.eachOption)}</div>
+				<i className={this.state.isCorrectFormat}></i>
+				{img}
+			</div>
+		</div>
+	},
+	validate(e) {
+		if(!this.state.canValidate) return;
+
+		let status = '';
+
+		if (this.props.correctAnswer == e.target.value)
+			status = 'SU-correct fa-check-circle';
 		else
-			return this.showEdit();
+			status = 'SU-incorrect fa-times-circle';
+
+		this.setState({ isCorrectFormat: "SU-validate far fa-4x " + status });
+
+		console.log(status);
+	},
+	eachOption(option, i) {
+		let opt = '';
+
+		switch (i) {
+			case 0: opt = "a"; break;
+			case 1: opt = "b"; break;
+			case 2: opt = "c"; break;
+			case 3: opt = "d"; break;
+		}
+
+		let id = this.props.questionIndex + '.' + i;
+
+		return <div className='SU-opt' key={i}>
+			<label>
+				<i>{opt}.</i>
+				<input onClick={this.validate} id={id} type='radio' name={"SU-" + this.props.questionIndex} value={opt} />
+				<i> {option}</i>
+			</label>
+		</div>
+	}
+});
+
+let SectionSeleccionUnica = React.createClass({
+	render() {
+		return <div>
+			{content.SeleccionUnica.map(this.eachItem)}
+		</div>
+	},
+
+	eachItem(question, i) {
+		return <SeleccionUnica
+			key={"SU" + i}
+			questionIndex={question.Indice}
+			question={question.Pregunta}
+			options={question.Opciones}
+			imgUrl={question.Imagen}
+			totalPer={question.Nota}
+			correctAnswer={question.Respuesta}
+		/>
 	}
 });
 
 let Header = React.createClass({
-	eachIntro(intro, i) {
-		return <h2>{intro}</h2>
-	},
 	render() {
 		return <div>
-			<img className='imgHeader' src='img/mep.png'></img>
+			<img className='imgHeader' src={content.ImagenPagina}></img>
 			{content.Intro.map(this.eachIntro)}
+			<h2 className='title'>{content.Titulo}</h2>
 		</div>;
+	},
+	eachIntro(intro, i) {
+		return <h3 key={i}>{intro}</h3>
 	}
 });
 
@@ -83,8 +97,10 @@ let AllContent = React.createClass({
 	},
 	render() {
 		return (
-			<div>
-				<Header></Header>
+			<div className='allContent'>
+				<Header />
+				<h2>PARTE I. SELECCION UNICA</h2>
+				<SectionSeleccionUnica />
 			</div>
 		)
 	}
@@ -92,15 +108,13 @@ let AllContent = React.createClass({
 
 let content;
 
-fetch("./content/content.json?v1")
+fetch("./content/content.json?v2")
 	.then(response => response.json())
 	.then(json => {
 		content = json;
 
 		ReactDOM.render(
-			<div className='allContent'>
-				<AllContent />
-			</div>,
+			<AllContent />,
 			document.getElementById('main')
 		);
 	});

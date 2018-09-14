@@ -2,13 +2,53 @@ body {
 			font-family: "open sans";
 		}
 
+		label{
+			font-family: "Consolas";
+		}
+
+		i {
+			font-style: normal;
+		}
+
 .imgHeader {
 	float: right;
 }
 
+.imgSU /* SELECCION UNICA */
+{
+	grid-column-start: 3;
+}
+
+.SU-opt {
+	padding: 4px 0
+}
+
+.SU-incorrect {
+	color: red;
+}
+
+.SU-correct {
+	color: lightseagreen;
+}
+
+.SU-validate {
+	grid-column-start: 2;
+	display: inline-grid;
+	justify-content: center;
+	position: relative;
+	align-content: center;
+}
+
+.gridSU
+{
+	display: grid;
+	grid-template-columns: 100px 100px 1fr;
+	grid-gap: 2em;
+}
+
 		#main {
 			display: grid;
-			grid-template-columns: 1fr 3fr 1fr;
+			grid-template-columns: 100px 3fr 100px;
 			grid-gap: 2em;
 		}
 
@@ -24,11 +64,8 @@ body {
 
 		.title {
 			text-align: center;
-			border: 1px solid rgb(111, 107, 138);
-			background-color: rgb(37, 138, 215);
-			border-radius: 10px;
-			margin-bottom: 10px;
-			color: white;
+			padding-bottom: 10px;
+			border-bottom: 1px solid rgb(111, 107, 138);
 		}
 
 		.food-container {
