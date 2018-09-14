@@ -42,13 +42,13 @@ body {
 .gridSU
 {
 	display: grid;
-	grid-template-columns: 100px 100px 1fr;
+	grid-template-columns: 150px 100px 1fr;
 	grid-gap: 2em;
 }
 
 		#main {
 			display: grid;
-			grid-template-columns: 100px 3fr 100px;
+			grid-template-columns: 1fr 14fr 1fr;
 			grid-gap: 2em;
 		}
 
@@ -64,6 +64,9 @@ body {
 
 		.title {
 			text-align: center;
+		}
+
+		.titleContent {
 			padding-bottom: 10px;
 			border-bottom: 1px solid rgb(111, 107, 138);
 		}

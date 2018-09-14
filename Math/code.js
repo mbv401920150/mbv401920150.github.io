@@ -79,10 +79,10 @@ let SectionSeleccionUnica = React.createClass({
 
 let Header = React.createClass({
 	render() {
-		return <div>
+		return <div className='titleContent'>
 			<img className='imgHeader' src={content.ImagenPagina}></img>
-			{content.Intro.map(this.eachIntro)}
 			<h2 className='title'>{content.Titulo}</h2>
+			{content.Intro.map(this.eachIntro)}
 		</div>;
 	},
 	eachIntro(intro, i) {
@@ -108,7 +108,7 @@ let AllContent = React.createClass({
 
 let content;
 
-fetch("./content/content.json?v2")
+fetch("./content/content.json?v3")
 	.then(response => response.json())
 	.then(json => {
 		content = json;

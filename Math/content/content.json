@@ -53,6 +53,57 @@
 			"Imagen": "./img/su4.png",
 			"Respuesta": "b",
 			"Nota": 10
+		},
+{
+			"Indice": 5,
+			"Pregunta": "De acuerdo con los datos de la figura, la altura del árbol corresponde a",
+			"Opciones": [
+				"47,49",
+				"16,78",
+				"64,45",
+				"40,27"
+			],
+			"Imagen": "./img/su5.png",
+			"Respuesta": "a",
+			"Nota": 10
+		},
+		{
+			"Indice": 6,
+			"Pregunta": "Sea un triángulo rectángulo con α como ángulo agudo. Si sen⁡ α=7/25, entonces cos⁡α corresponde a",
+			"Opciones": [
+				"24/25",
+				"7/24",
+				"20/7",
+				"24/25"
+			],
+			"Respuesta": "d",
+			"Nota": 10
+		},
+		{
+			"Indice": 7,
+			"Pregunta": "De acuerdo con los datos de la figura, la altura del globo  corresponde a:",
+			"Opciones": [
+				"65,12",
+				"70,28",
+				"73,64",
+				"56,12"
+			],
+			"Imagen": "./img/su7.png",
+			"Respuesta": "c",
+			"Nota": 10
+		},
+		{
+			"Indice": 8,
+			"Pregunta": "De acuerdo con los datos de la figura, la distancia x corresponde a",
+			"Opciones": [
+				"1046,06",
+				"821,78",
+				"2064,45",
+				"1038,27"
+			],
+			"Imagen": "./img/su8.png",
+			"Respuesta": "a",
+			"Nota": 10
 		}
 	],
 	"RespuestaBreve": [
