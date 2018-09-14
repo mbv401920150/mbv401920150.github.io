@@ -157,7 +157,7 @@ let AllContent = React.createClass({
 
 let content;
 
-fetch("./content/content.json?v3")
+fetch("./content/content.json?v4")
 	.then(response => response.json())
 	.then(json => {
 		content = json;
