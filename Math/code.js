@@ -12,28 +12,34 @@ let SeleccionUnica = React.createClass({
 		if (this.props.imgUrl != undefined)
 			img = <img className='imgSU' src={this.props.imgUrl}></img>
 
-		return <div>
+		let item = <div>
 			<p>{this.props.questionIndex}. {this.props.question}</p>
 			<div className='gridSU'>
 				<div className='gridSU-options'>{this.props.options.map(this.eachOption)}</div>
 				<i className={this.state.isCorrectFormat}></i>
 				{img}
 			</div>
-		</div>
+		</div>;
+
+		return item;
 	},
 	validate(e) {
 		if (!this.state.canValidate) return;
 
 		let status = '';
+		let score = 0;
+		let key = 'SU' + this.props.questionIndex;
 
-		if (this.props.correctAnswer == e.target.value)
+		if (this.props.correctAnswer == e.target.value) {
+			score = this.props.totalPer;
 			status = 'SU-correct fa-check-circle';
+		}
 		else
 			status = 'SU-incorrect fa-times-circle';
 
-		this.setState({ isCorrectFormat: "SU-validate far fa-4x " + status });
+		results[key] = score;
 
-		console.log(status);
+		this.setState({ isCorrectFormat: "SU-validate far fa-4x " + status });
 	},
 	eachOption(option, i) {
 		let opt = '';
@@ -58,6 +64,13 @@ let SeleccionUnica = React.createClass({
 });
 
 let RespuestaBreve = React.createClass({
+	getInitialState() {
+		return {
+			isCorrectFormat: '',
+			isCorrect: false,
+			canValidate: true
+		}
+	},
 	render() {
 		let img;
 
@@ -71,19 +84,51 @@ let RespuestaBreve = React.createClass({
 		</div>
 	},
 	eachQuestion(e, i) {
+		let index = 0;
+
 		return <div key={i}>
 			<div className='RB-question'>
 				{e.Pregunta}
-				{e.Respuesta.map(this.eachAnswer)}
+				{e.Respuesta.map(
+					e => {
+						return this.eachAnswer(e, i, index++);
+					}
+				)}
 			</div>
 		</div>;
 	},
-	eachAnswer(e, i) {
-		let answer = <input className='RB-input' key={i} type='text'></input>;
+	eachAnswer(e, indexQuestion, indexAnswer) {
+		let answer = <input
+			className='RB-input'
+			key={indexQuestion + '.' + indexAnswer}
+			type='text'
+			onChange={(e) => { this.validate(e, indexQuestion, indexAnswer); }}></input>;
 
-		if (i > 0) answer = <div className="RB-multipleAnswers"> y <input className='RB-input' key={i} type='text'></input> </div>
+		if (indexAnswer > 0) answer = <div className="RB-multipleAnswers"> y <input
+			className='RB-input'
+			key={indexQuestion + '.' + indexAnswer + '.2'}
+			type='text'
+			onChange={(e) => { this.validate(e, indexQuestion, indexAnswer); }}></input> </div>
 
 		return answer;
+	},
+	validate(e, indexQuestion, indexAnswer) {
+		if (!this.state.canValidate) return;
+
+		e.currentTarget.style.fontWeight = "bolder";
+
+		let key = "RB" + this.props.questionIndex + "." + indexQuestion + "." + indexAnswer;
+		let score = 0;
+
+		if (this.props.questions[indexQuestion].Respuesta[indexAnswer] == e.target.value) {
+			e.currentTarget.style.color = 'lightseagreen';
+			score = this.props.questions[indexQuestion].Nota / this.props.questions[indexQuestion].Respuesta.length;
+		}
+		else {
+			e.currentTarget.style.color = 'red';
+		}
+
+		results[key] = score;
 	}
 });
 
@@ -94,9 +139,8 @@ let SectionSeleccionUnica = React.createClass({
 			{content.SeleccionUnica.map(this.eachItem)}
 		</div>
 	},
-
 	eachItem(question, i) {
-		return <SeleccionUnica
+		let item = <SeleccionUnica
 			key={"SU" + i}
 			questionIndex={question.Indice}
 			question={question.Pregunta}
@@ -105,6 +149,8 @@ let SectionSeleccionUnica = React.createClass({
 			totalPer={question.Nota}
 			correctAnswer={question.Respuesta}
 		/>
+
+		return item;
 	}
 });
 
@@ -150,11 +196,38 @@ let AllContent = React.createClass({
 				<Header />
 				<SectionSeleccionUnica />
 				<SectionRespuestaBreve />
+				<Validate />
 			</div>
 		)
 	}
 });
 
+let Validate = React.createClass({
+	render() {
+		return <div>
+			<hr style= {{margin: '40px 0'}} />
+			<input id='btn-NotaFinal' type='button' value='Ver nota final' onClick={this.validate} />
+			<div>
+				<p className='hideNote showNote'>Su nota final es: </p>
+			</div>
+		</div>
+	},
+	validate() {
+		let finalScore = 0;
+
+		for (let item in results)
+			finalScore += results[item];
+
+		let message = document.getElementsByClassName('showNote')[0];
+
+		if (finalScore == undefined) finalScore = 0;
+
+		message.innerHTML = "Su nota final es: " + finalScore;
+		message.classList.remove('hideNote');
+	}
+});
+
+let results = {};
 let content;
 
 fetch("./content/content.json?v4")

@@ -67,6 +67,10 @@ body {
 	align-content: space-around !important;
 }
 
+#btnValidate {
+	padding: 5px 10px;
+}
+
 		#main {
 			display: grid;
 			grid-template-columns: 1fr 14fr 1fr;
@@ -83,63 +87,22 @@ body {
 			grid-gap: 1em;
 		}
 
-		.title {
-			text-align: center;
-		}
+#btn-NotaFinal {
+	border-radius: 7px;
+    width: 100%;
+    font-family: "open sans", 'Verdana', 'Helvetica';
+    font-size: x-large;
+    background-color: #2988c4;
+    color: white;
+}
 
-		.titleContent {
-			padding-bottom: 10px;
-			border-bottom: 1px solid rgb(111, 107, 138);
-		}
+.hideNote {
+	visibility: hidden !important;
+}
 
-		.food-container {
-			width: 250px;
-			border: 1px solid rgb(217, 217, 217);
-			border-radius: 5px;
-			justify-self: center;
-			text-align: center;
-			padding: 10px 0px
-		}
-
-		.inputContent {
-			display: grid;
-			grid-template-columns: 1fr 50px;
-			margin-bottom: 7px;
-			box-sizing: border-box;
-
-		}
-
-		.inputContent input {
-			padding: 10px;
-			outline: 0;
-		}
-
-		.inputContent input[type=text] {
-			border: 1px solid rgb(217, 217, 217);
-			border-radius: 10px 0 0 10px;
-		}
-
-		.inputContent input[type=button] {
-			border-radius: 0 10px 10px 0;
-		}
-
-		.dishOptions div {
-			cursor: pointer;
-			display:inline-flex;
-			padding: 10px 10px;
-		}
-
-		input[type=checkbox] {
-			appearance: none;
-			-moz-appearance: none;
-			-webkit-appearance: none;
-			outline: 0;
-		}
-
-		.heartBlack::before {
-			content: "ðŸ–¤";
-		}
-
-		.heart::before {
-			content: "â¤ï¸";
-		}
+.showNote {
+	visibility: visible;
+	width: 100%;
+	font-family: "open sans", 'Verdana', 'Helvetica';
+	font-size: x-large;
+}
