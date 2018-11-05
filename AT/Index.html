@@ -83,6 +83,9 @@
 			case "LERP":
 				loadLerp();
 				break;
+			case "L&T":
+				loadLT();
+				break;
 		}
 	}
 
@@ -102,13 +105,21 @@
 			}) // Imprime en la consola el primer resultado del API
 			.catch(err => console.log(err)); // En caso de error imprime en consola la excepcion
 	}
+	function loadLT() {
+		fetch('./LT.json') // Devuelve un Promise (Por defecto envia el metodo GET)
+			.then(result => result.json()) // Siempre devuelve un resultado con un JSON (Que es otra Promise)
+			.then(json => {
+				renderPart2(json);
+			}) // Imprime en la consola el primer resultado del API
+			.catch(err => console.log(err)); // En caso de error imprime en consola la excepcion
+	}
 
 	function renderPart2(json) {
 		let renderObj = document.querySelector(".questions-part2");
 		renderObj.innerHTML = '';
 		let country = document.querySelector('#opt-3').value;
 		let index = 7;
-		
+
 		renderObj.insertAdjacentHTML('beforeEnd', `<hr/><h1>PART 2</h1>`);
 
 		json.forEach(element => {

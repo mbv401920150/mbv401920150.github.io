@@ -22,7 +22,7 @@
 		"Sub-Scope": "",
 		"REGION": "",
 		"General question": "Yes",
-		"Picklist": ["US", "CA", "MX", "CR", "BR" ]
+		"Picklist": ["", "US", "CA", "MX", "CR", "BR" ]
 	},
 	{
 		"Order": 4,
@@ -47,6 +47,6 @@
 		"Sub-Scope": "",
 		"REGION": "",
 		"General question": "Yes",
-		"Picklist": ["", "Growth", "LERP"]
+		"Picklist": ["", "Growth", "LERP", "L&T"]
 	}
 ]

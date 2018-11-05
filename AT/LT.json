@@ -1,0 +1,121 @@
+[
+	{
+		"Order": 1,
+		"Question": "Is required BES Services Portal? <b>Just for Brazil</b>",
+		"Scope": "IT",
+		"Sub-Scope": "P2P",
+		"REGION": "BR"
+	},
+	{
+		"Order": 2,
+		"Question": "Is required GR IR Monitor? <b>Just for Brazil</b>",
+		"Scope": "IT",
+		"Sub-Scope": "P2P",
+		"REGION": "BR"
+	},
+	{
+		"Order": 3,
+		"Question": "Is required to use CTe Monitor? Any new freight routes? <b>Just for Brazil</b>",
+		"Scope": "IT",
+		"Sub-Scope": "P2P",
+		"REGION": "BR"
+	},
+	{
+		"Order": 4,
+		"Question": "The new plant´s CNPJ (Tax ID) has to be setup in the solution of GR IR Monitor, Service Monitor and Freights Monitor. <b>Just for Brazil</b>",
+		"Scope": "IT",
+		"Sub-Scope": "R2R",
+		"REGION": "BR"
+	},
+	{
+		"Order": 5,
+		"Question": "Is required a Fixed Assets Migration?",
+		"Scope": "R2R",
+		"Sub-Scope": "C&FA",
+		"REGION": "Americas"
+	},
+	{
+		"Order": 6,
+		"Question": "Is there any change at currency or Exchange Level?",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": ""
+	},
+	{
+		"Order": 7,
+		"Question": "Are there any new Tax rates?",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": ""
+	},
+	{
+		"Order": 8,
+		"Question": "Is there any impact on SATI/SPED. <b>Just for Brazil</b>",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": "BR"
+	},
+	{
+		"Order": 9,
+		"Question": "Is there any Vertex Change?",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": ""
+	},
+	{
+		"Order": 10,
+		"Question": "Is there any impact in fiscal reporting?",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": ""
+	},
+	{
+		"Order": 11,
+		"Question": "Will the project impact trade sales?  Volume or Invoicing process?",
+		"Scope": "",
+		"Sub-Scope": "P2P",
+		"REGION": ""
+	},
+	{
+		"Order": 12,
+		"Question": "Will the project impact current electronic invoice solution? Invoice layout / Debit - Credit Notes Layout",
+		"Scope": "",
+		"Sub-Scope": "P2P",
+		"REGION": ""
+	},
+	{
+		"Order": 13,
+		"Question": "Will the project implement an electronic invoice solution or new version?",
+		"Scope": "",
+		"Sub-Scope": "P2P",
+		"REGION": ""
+	},
+	{
+		"Order": 14,
+		"Question": "Will the project impact the account receivable process (Collections, Cross balances, customers payments, tax sales)?",
+		"Scope": "",
+		"Sub-Scope": "P2P",
+		"REGION": ""
+	},
+	{
+		"Order": 15,
+		"Question": "Will the project impact the current tax payment solution?",
+		"Scope": "",
+		"Sub-Scope": "P2P",
+		"REGION": ""
+	},
+	{
+		"Order": 16,
+		"Question": "Will the project impact the SCF vendor factoring solution?",
+		"Scope": "",
+		"Sub-Scope": "P2P",
+		"REGION": ""
+	},
+	{
+		"Order": 17,
+		"Question": "Will the project require any change in the current treasury bank solution? New, closure or changes bank accounts or services.",
+		"Scope": "",
+		"Sub-Scope": "P2P",
+		"REGION": ""
+	}
+]
