@@ -12,7 +12,9 @@
 <body>
 	<div class='banner'>ASSESSMENT TOOL</div>
 	<div class='container'>
-		<div class='questions'></div>
+		<div class='questions'>
+			<div class='header'>General questions</div>
+		</div>
 		<div class='questions-part2'></div>
 	</div>
 </body>
@@ -39,7 +41,7 @@
 			let userInput;
 
 			if (element.Picklist == undefined)
-				userInput = `<textarea id='opt-${element.Order}' rows=5></textarea>`;
+				userInput = `<textarea id='opt-${element.Order}' rows='${element.Lines}'></textarea>`;
 			else {
 				let picklistValues = "";
 
@@ -50,8 +52,23 @@
 				userInput = `<select id='opt-${element.Order}'>${picklistValues}</select>`;
 			}
 
-			let html = `<div><div class='order'>${element.Order}.</div><p> ${element.Question}</p>${userInput}</div>`;
+			let html;
 
+			if (element.Columns == "Yes")
+				html = `
+				<div>
+					<div class='container-question'>
+						<div class='col2-content'>
+							<div class='order'>${element.Order}. </div>
+							<div>${element.Question}&nbsp&nbsp</div>
+						</div>
+						<div class='col2-answer'>${userInput}</div>
+					</div>
+				</div>`;
+			else
+				html = `<div><div class='order'>${element.Order}.</div><p> ${element.Question}</p>${userInput}</div>`;
+				
+			html+= `<div class='splitter'></div>`
 			renderObj.insertAdjacentHTML('beforeEnd', html);
 		});
 
@@ -93,7 +110,7 @@
 		fetch('./lerp.json') // Devuelve un Promise (Por defecto envia el metodo GET)
 			.then(result => result.json()) // Siempre devuelve un resultado con un JSON (Que es otra Promise)
 			.then(json => {
-				renderPart2(json);
+				renderPart2(json, "LERP");
 			}) // Imprime en la consola el primer resultado del API
 			.catch(err => console.log(err)); // En caso de error imprime en consola la excepcion
 	}
@@ -101,7 +118,7 @@
 		fetch('./growth.json') // Devuelve un Promise (Por defecto envia el metodo GET)
 			.then(result => result.json()) // Siempre devuelve un resultado con un JSON (Que es otra Promise)
 			.then(json => {
-				renderPart2(json);
+				renderPart2(json, "Growth");
 			}) // Imprime en la consola el primer resultado del API
 			.catch(err => console.log(err)); // En caso de error imprime en consola la excepcion
 	}
@@ -109,24 +126,25 @@
 		fetch('./LT.json') // Devuelve un Promise (Por defecto envia el metodo GET)
 			.then(result => result.json()) // Siempre devuelve un resultado con un JSON (Que es otra Promise)
 			.then(json => {
-				renderPart2(json);
+				renderPart2(json, "L&T");
 			}) // Imprime en la consola el primer resultado del API
 			.catch(err => console.log(err)); // En caso de error imprime en consola la excepcion
 	}
 
-	function renderPart2(json) {
+	function renderPart2(json, section) {
 		let renderObj = document.querySelector(".questions-part2");
 		renderObj.innerHTML = '';
 		let country = document.querySelector('#opt-3').value;
 		let index = 7;
 
-		renderObj.insertAdjacentHTML('beforeEnd', `<hr/><h1>PART 2</h1>`);
+		renderObj.insertAdjacentHTML('beforeEnd', `<div class='header-part2'>Part 2 - ${section}</div>`);
 
 		json.forEach(element => {
 			if (country != "BR" && element.REGION == 'BR') return;
 
-			userInput = `<textarea id='opt-${index}' rows=5></textarea>`;
-			let html = `<div><div class='order'>${index++}.</div><p> ${element.Question}</p>${userInput}</div>`;
+			userInput = `<textarea id='opt-${index}' rows=3></textarea>`;
+			let html = `<div><div class='order'>${index++}.</div><p> ${element.Question}</p>${userInput}</div><div class='splitter-2'></div>`;
+		
 			renderObj.insertAdjacentHTML('beforeEnd', html);
 		});
 

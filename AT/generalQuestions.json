@@ -2,6 +2,8 @@
 	{
 		"Order": 1,
 		"Question": "Project Name:",
+		"Lines": 1,
+		"Columns": "Yes",
 		"Scope": "",
 		"Sub-Scope": "",
 		"REGION": "",
@@ -10,6 +12,8 @@
 	{
 		"Order": 2,
 		"Question": "Project scope:",
+		"Lines": 2,
+		"Columns": "Yes",
 		"Scope": "",
 		"Sub-Scope": "",
 		"REGION": "",
@@ -18,6 +22,8 @@
 	{
 		"Order": 3,
 		"Question": "Country impacted:",
+		"Lines": 1,
+		"Columns": "Yes",
 		"Scope": "",
 		"Sub-Scope": "",
 		"REGION": "",
@@ -27,6 +33,8 @@
 	{
 		"Order": 4,
 		"Question": "Legal Entities impacted? (New or current):",
+		"Lines": 2,
+		"Columns": "No",
 		"Scope": "",
 		"Sub-Scope": "",
 		"REGION": "",
@@ -35,6 +43,8 @@
 	{
 		"Order": 5,
 		"Question": "Is there any impact in current Legal Entity Model?<br/>If, yes, please share current and future model:",
+		"Lines": 3,
+		"Columns": "No",
 		"Scope": "",
 		"Sub-Scope": "",
 		"REGION": "",
@@ -43,6 +53,8 @@
 	{
 		"Order": 6,
 		"Question": "Category type;",
+		"Columns": "No",
+		"Lines": 1,
 		"Scope": "",
 		"Sub-Scope": "",
 		"REGION": "",
