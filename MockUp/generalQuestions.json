@@ -1,0 +1,52 @@
+[
+	{
+		"Order": 1,
+		"Question": "Project Name:",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": "",
+		"General question": "Yes"
+	},
+	{
+		"Order": 2,
+		"Question": "Project scope:",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": "",
+		"General question": "Yes"
+	},
+	{
+		"Order": 3,
+		"Question": "Country impacted:",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": "",
+		"General question": "Yes",
+		"Picklist": ["US", "CA", "MX", "CR", "BR" ]
+	},
+	{
+		"Order": 4,
+		"Question": "Legal Entities impacted? (New or current):",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": "",
+		"General question": "Yes"
+	},
+	{
+		"Order": 5,
+		"Question": "Is there any impact in current Legal Entity Model?<br/>If, yes, please share current and future model:",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": "",
+		"General question": "Yes"
+	},
+	{
+		"Order": 6,
+		"Question": "Category type;",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": "",
+		"General question": "Yes",
+		"Picklist": ["", "Growth", "LERP"]
+	}
+]

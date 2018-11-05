@@ -1,0 +1,86 @@
+[
+	{
+		"Order": 1,
+		"Question": "Is required BES Services Portal? <b>Just for Brazil</b>",
+		"Scope": "IT",
+		"Sub-Scope": "P2P",
+		"REGION": "BR"
+	},
+	{
+		"Order": 2,
+		"Question": "Is required GR IR Monitor? <b>Just for Brazil</b>",
+		"Scope": "IT",
+		"Sub-Scope": "P2P",
+		"REGION": "BR"
+	},
+	{
+		"Order": 3,
+		"Question": "Is required to use CTe Monitor? Any new freight routes? <b>Just for Brazil</b>",
+		"Scope": "IT",
+		"Sub-Scope": "P2P",
+		"REGION": "BR"
+	},
+	{
+		"Order": 4,
+		"Question": "The new plant´s CNPJ (Tax ID) has to be setup in the solution of GR IR Monitor, Service Monitor and Freights Monitor. <b>Just for Brazil</b>",
+		"Scope": "IT",
+		"Sub-Scope": "R2R",
+		"REGION": "BR"
+	},
+	{
+		"Order": 5,
+		"Question": "Will this new GROWTH project impact sales volume?",
+		"Scope": "P2P-B&AR",
+		"Sub-Scope": "AR",
+		"REGION": "Americas"
+	},
+	{
+		"Order": 6,
+		"Question": "What type of purchases are in Scope? Direct (i.e. ROH, HALB), Indirect (i.e. GCAS STRM, Services) or Capital.",
+		"Scope": "P2P-B&AR",
+		"Sub-Scope": "P2P",
+		"REGION": "Americas"
+	},
+	{
+		"Order": 7,
+		"Question": "Will the new site be managed by P&G or a Third Party?",
+		"Scope": "P2P-B&AR",
+		"Sub-Scope": "P2P",
+		"REGION": "Americas"
+	},
+	{
+		"Order": 8,
+		"Question": "What will be the strategy for Fixed Assets? Transfer FA from other site or buy new equipment?",
+		"Scope": "R2R",
+		"Sub-Scope": "C&FA",
+		"REGION": "Americas"
+	},
+	{
+		"Order": 9,
+		"Question": "Confirm if there are sales to other regions? What regions?",
+		"Scope": "R2R",
+		"Sub-Scope": "AFF",
+		"REGION": "Americas"
+	},
+	{
+		"Order": 10,
+		"Question": "New Transportation Zone and Transportation Zone groups?",
+		"Scope": "R2R",
+		"Sub-Scope": "COPA",
+		"REGION": "Americas"
+	},
+	{
+		"Order": 11,
+		"Question": "Will this new distribution center impact trade sales?  Volume or Invoicing?",
+		"Scope": "P2P-B&AR",
+		"Sub-Scope": "AR",
+		"REGION": "Americas"
+	},
+	{
+		"Order": 12,
+		"Question": "Will this new distribution centr require new bank accounts or new payment method not available in P&G?",
+		"Scope": "P2P-B&AR",
+		"Sub-Scope": "Banking",
+		"REGION": "Americas"
+	}
+]

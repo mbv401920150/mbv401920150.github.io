@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Mockup - Assesment tool</title>
+	<link rel="stylesheet" href="./local.css">
+</head>
+
+<body>
+	<div class='banner'>ASSESSMENT TOOL</div>
+	<div class='container'>
+		<div class='questions'></div>
+		<div class='questions-part2'></div>
+	</div>
+</body>
+
+</html>
+
+<script>
+	let gJson;
+
+	function getGeneralQuestions() {
+		fetch('./generalQuestions.json') // Devuelve un Promise (Por defecto envia el metodo GET)
+			.then(result => result.json()) // Siempre devuelve un resultado con un JSON (Que es otra Promise)
+			.then(json => {
+				gJson = json;
+				render(json);
+			}) // Imprime en la consola el primer resultado del API
+			.catch(err => console.log(err)); // En caso de error imprime en consola la excepcion
+	};
+
+	function render(json) {
+		let renderObj = document.querySelector(".questions");
+
+		json.forEach(element => {
+			let userInput;
+
+			if (element.Picklist == undefined)
+				userInput = `<textarea id='opt-${element.Order}' rows=5></textarea>`;
+			else {
+				let picklistValues = "";
+
+				element.Picklist.forEach(picklistVal => {
+					picklistValues += `<option value="${picklistVal}">${picklistVal}</option>`
+				});
+
+				userInput = `<select id='opt-${element.Order}'>${picklistValues}</select>`;
+			}
+
+			let html = `<div><div class='order'>${element.Order}.</div><p> ${element.Question}</p>${userInput}</div>`;
+
+			renderObj.insertAdjacentHTML('beforeEnd', html);
+		});
+
+		renderObj.insertAdjacentHTML('beforeEnd',
+			`<i class='warning'><br/>* Before to continue you must category type</i>
+		<p><input class='btn-continue' type='button' value='Continue'/></p>`);
+
+		document.querySelector('.btn-continue').addEventListener('click', btnClick);
+	};
+
+	function btnClick() {
+		let type = document.querySelector('#opt-6').value;
+
+		if (type == undefined || type == "") {
+			let waringStyle = document.querySelector(".warning");
+			waringStyle.style.display = "contents";
+
+			setTimeout(() => {
+				waringStyle.style.display = "none";
+			}, 2000);
+
+			return;
+		}
+
+		switch (type) {
+			case "Growth":
+				loadGrowth();
+				break;
+			case "LERP":
+				loadLerp();
+				break;
+		}
+	}
+
+	function loadLerp() {
+		fetch('./lerp.json') // Devuelve un Promise (Por defecto envia el metodo GET)
+			.then(result => result.json()) // Siempre devuelve un resultado con un JSON (Que es otra Promise)
+			.then(json => {
+				renderPart2(json);
+			}) // Imprime en la consola el primer resultado del API
+			.catch(err => console.log(err)); // En caso de error imprime en consola la excepcion
+	}
+	function loadGrowth() {
+		fetch('./growth.json') // Devuelve un Promise (Por defecto envia el metodo GET)
+			.then(result => result.json()) // Siempre devuelve un resultado con un JSON (Que es otra Promise)
+			.then(json => {
+				renderPart2(json);
+			}) // Imprime en la consola el primer resultado del API
+			.catch(err => console.log(err)); // En caso de error imprime en consola la excepcion
+	}
+
+	function renderPart2(json) {
+		let renderObj = document.querySelector(".questions-part2");
+		renderObj.innerHTML = '';
+		let country = document.querySelector('#opt-3').value;
+		let index = 7;
+		
+		renderObj.insertAdjacentHTML('beforeEnd', `<hr/><h1>PART 2</h1>`);
+
+		json.forEach(element => {
+			if (country != "BR" && element.REGION == 'BR') return;
+
+			userInput = `<textarea id='opt-${index}' rows=5></textarea>`;
+			let html = `<div><div class='order'>${index++}.</div><p> ${element.Question}</p>${userInput}</div>`;
+			renderObj.insertAdjacentHTML('beforeEnd', html);
+		});
+
+		renderObj.insertAdjacentHTML('beforeEnd',
+			`<p><input class='btn-submit' type='button' value='Submit'/></p>`);
+
+		document.querySelector('.btn-submit').addEventListener('click', btnClick);
+	}
+
+	getGeneralQuestions();
+
+</script>

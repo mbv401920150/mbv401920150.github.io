@@ -1,0 +1,42 @@
+[
+	{
+		"Order": 1,
+		"Question": "Is the CFC already approved? If, yes, please attach.",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": "",
+		"General question": ""
+	},
+	{
+		"Order": 2,
+		"Question": "Which type of LERP is required: Merge, fusion, divestiture, liquidation, other.",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": "",
+		"General question": ""
+	},
+	{
+		"Order": 3,
+		"Question": "Select if the LE has balances in any of the below scenarios: Inventory, FA, AP, AR, MSA, SRAP",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": "",
+		"General question": ""
+	},
+	{
+		"Order": 4,
+		"Question": "is required data migration? Or will remaining balances be adjusted against Profit and Losses account?",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": "",
+		"General question": ""
+	},
+	{
+		"Order": 5,
+		"Question": "Is there any impact in fiscal reporting?",
+		"Scope": "",
+		"Sub-Scope": "",
+		"REGION": "",
+		"General question": ""
+	}
+]
