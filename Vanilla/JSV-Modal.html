@@ -1,0 +1,60 @@
+</body>
+
+</html>
+<!DOCTYPE html>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./fw.css">
+	<style>
+
+        .testt {
+            width: 100%;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            float: none;
+        }
+
+        .s {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            vertical-align: middle !important;
+        }
+    </style>
+</head>
+
+<body>
+	<button id='idModal'>View modal</button>
+	<br />
+	<textarea id='cmd' rows=1 cols=40 placeholder="Paste your data here..."></textarea>
+</body>
+
+</html>
+<script src="./fw.js"></script>
+<script type='text/javascript'>
+	let fw = new FW();
+
+	let clipboard = document.querySelector("#cmd");
+
+	clipboard.addEventListener('input', function () {
+		clipboard.placeholder = '...processing...';
+		clipboard.readOnly = true;
+		let temp = clipboard.value;
+		clipboard.value = "";
+
+		let json = fw.jsonFromText(temp, true);
+
+		console.log(json);
+
+		clipboard.readOnly = false;
+		clipboard.placeholder = 'Paste your data here...';
+	});
+
+	document.querySelector("#idModal").addEventListener('click', () => {
+		let html = `<div><input type='text' id=''>PASTE</input></div>`;
+		let varv = document.execCommand('copy');
+
+		let modal = new fwvModal();
+		modal.show(["Accept", "Cancel"], "Select", html)
+	});
+</script>
