@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'OpenSans';
+    src: url('./fonts/OpenSans.ttf') format('opentype');
+}
+
+body, button, input, textarea {
+	font-family: "OpenSans" !important;
+	font-size: 16px;
+}
+
+h1 {
+	border-bottom: 1px solid #ECEFF1;
+}
+
+.s > i {
+	vertical-align: middle !important;
+}
+.s > b
+{
+	vertical-align: middle !important;
+	font-family: 'Calibri'
+}
+
+.a {
+	color: #4285f4;
+}
+
+.c {
+	color: #ea4335;
+}

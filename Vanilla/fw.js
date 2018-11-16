@@ -103,6 +103,35 @@ class FW
 
 		return json;
 	}
+
+	jsonToHtml(jsonData)
+	{
+		let html = '';
+		let columns = '';
+		let rows = '';
+
+		Object.getOwnPropertyNames(t[0]).forEach(col => columns += `<th>${col}</th>`);
+
+		for (let i in jsonData) {
+			rows += "\r\n<tr>";
+
+			for (let prop in jsonData[i]) {
+				if (!jsonData[i].hasOwnProperty(prop)) continue;
+
+				rows += `<td>${jsonData[i][prop]}</td>`;
+			}
+
+			rows += '</tr>';
+		}
+
+		html = `
+<table>
+	<tr>${columns}</tr>
+	${rows}
+</table>`;
+
+		return html;
+	}
 }
 
 let fw = new FW();
@@ -318,7 +347,7 @@ class fwvSelectMultiple
 	{
 		opts.showList = opts.showList == undefined ? false : opts.showList;
 		opts.width = opts.width == undefined ? '200px' : opts.width;
-		opts.placeholder = opts.placeholder == undefined ? 'VALUES' : opts.placeholder;
+		opts.placeholder = opts.placeholder == undefined ? 'No items selected...' : opts.placeholder;
 
 		this.id = "multiple-" + fw.guid();
 		this.opts = opts;

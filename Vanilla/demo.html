@@ -1,0 +1,91 @@
+</body>
+
+</html>
+<!DOCTYPE html>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="./demo.css">
+	<link rel="stylesheet" href="./fw.css">
+</head>
+
+<body>
+	<h1><img src='./img/logo.png' /> Vanilla Framework (BETA) - Technical Demo </h1>
+	<h3>Open the console of your browser to display the results. All customizable code it's embedded in the HTML.</h3>
+	<hr />
+	<div>
+		<p><u>Modal demo:</u> Shows a modal in the web page. The modal contains a multiple select picklist (created by the
+			framework).</p>
+		<button id='idModal'>View modal</button>
+	</div>
+	<br />
+	<div>
+		<p><u>Clipboard to JSON:</u> Take text from the user and transform the data to a JSON object</p>
+		<textarea id='cmd' rows=1 cols=40></textarea>
+		<div id='jsonTable'></div>
+	</div>
+
+</body>
+
+</html>
+
+<script src="./fw.js"></script>
+<script type='text/javascript'>
+	document.querySelector("#idModal").addEventListener('click', () => {
+		let html = `<div><p>Select the LE:</p><div id='msLe'></div></div>`;
+
+		let modal = new fwvModal(
+			{
+				header: 'Confirmation',
+				content: html,
+				buttons: [
+					{ value: 'accept', content: '<i class="a far fa-lg fa-check-circle"></i> <b>Accept</b>', class: "s" },
+					{ value: 'cancel', content: '<i class="c fas fa-lg fa-ban"></i> <b>Cancel</b>', class: "s" }
+				],
+				callback: (opt, self) => {
+					console.log(opt, self.multiple.valuesSelected)
+				},
+				onAfterRender: (self) => {
+					let listLe = new fwvSelectMultiple({
+						parent: '#msLe',
+						values: ['001', '002', '003'],
+						width: '350px',
+						class: 's',
+						placeholder: 'Select your LEs...',
+						showList: true
+					});
+
+					listLe.render();
+
+					self.multiple = listLe;
+				},
+				onClose: (self) => {
+					console.log('Close', self);
+				}
+			});
+
+		modal.render();
+	});
+	
+	fw.textAreaToClipboardReader(
+		{
+			selector: '#cmd',
+			callback: (result) => {
+				t = result;
+				console.log('TEST!!!', result);
+				console.log(showTable(result));
+			},
+			hasHeaders: true
+		});
+
+	function showTable(jsonData) {
+		html = "<p>The result of the clipboard is: </p>" + fw.jsonToHtml(jsonData);
+
+		let htmlElement = document.querySelector("#jsonTable");
+		htmlElement.innerHTML = "";
+		htmlElement.insertAdjacentHTML('afterBegin', html);
+	}
+
+</script>
