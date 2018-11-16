@@ -22,7 +22,8 @@
 	</div>
 	<br />
 	<div>
-		<p><u>Clipboard to JSON:</u> Take text from the user and transform the data to a JSON object</p>
+		<p><u>Clipboard to JSON:</u> Copy some information from Excel and paste it in the textbox below.<br/>
+			The Framework will take the text from the user and transform the data to a JSON object.</p>
 		<textarea id='cmd' rows=1 cols=40></textarea>
 		<div id='jsonTable'></div>
 	</div>
@@ -74,7 +75,7 @@
 			selector: '#cmd',
 			callback: (result) => {
 				t = result;
-				console.log('TEST!!!', result);
+				console.log('JSON Conversion:', result);
 				console.log(showTable(result));
 			},
 			hasHeaders: true
