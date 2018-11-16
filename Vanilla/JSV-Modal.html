@@ -5,10 +5,12 @@
 
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+	 crossorigin="anonymous">
 	<link rel="stylesheet" href="./fw.css">
 	<style>
 
-        .testt {
+		.testt {
             width: 100%;
             height: 100px;
             background-color: red;
@@ -16,45 +18,81 @@
             float: none;
         }
 
-        .s {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            vertical-align: middle !important;
-        }
+        .s > i {
+			vertical-align: middle !important;
+		}
+		.s > b
+		{
+			vertical-align: middle !important;
+			font-family: 'Montserrat'
+		}
+		
+		
+		.a {
+			color: #4285f4;
+		}
+
+		.c {
+			color: #ea4335;
+		}
+
     </style>
 </head>
 
 <body>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
 	<button id='idModal'>View modal</button>
 	<br />
-	<textarea id='cmd' rows=1 cols=40 placeholder="Paste your data here..."></textarea>
+	<textarea id='cmd' rows=1 cols=40></textarea>
+	<div id='ms'></div>
 </body>
 
 </html>
 <script src="./fw.js"></script>
 <script type='text/javascript'>
-	let fw = new FW();
 
-	let clipboard = document.querySelector("#cmd");
 
-	clipboard.addEventListener('input', function () {
-		clipboard.placeholder = '...processing...';
-		clipboard.readOnly = true;
-		let temp = clipboard.value;
-		clipboard.value = "";
-
-		let json = fw.jsonFromText(temp, true);
-
-		console.log(json);
-
-		clipboard.readOnly = false;
-		clipboard.placeholder = 'Paste your data here...';
-	});
+	fw.textAreaToClipboardReader(
+		{
+			selector: '#cmd',
+			callback: (result) => { console.log('TEST!!!', result) },
+			hasHeaders: true
+		});
 
 	document.querySelector("#idModal").addEventListener('click', () => {
-		let html = `<div><input type='text' id=''>PASTE</input></div>`;
+		let html = `<div><p>Select the LE:</p><div id='msLe'></div></div>`;
 		let varv = document.execCommand('copy');
 
-		let modal = new fwvModal();
-		modal.show(["Accept", "Cancel"], "Select", html)
+		let modal = new fwvModal(
+			{
+				header: 'TEST',
+				content: html,
+				buttons: [
+					{ value: 'accept', content: '<i class="a far fa-lg fa-check-circle"></i> <b>Accept</b>', class: "s" },
+					{ value: 'cancel', content: '<i class="c fas fa-lg fa-ban"></i> <b>Cancel</b>', class: "s" }
+				],
+				callback: (opt, self) => {
+					console.log(opt, self.multiple.valuesSelected)
+				},
+				onAfterRender: (self) => {
+					let listLe = new fwvSelectMultiple({
+						parent: '#msLe',
+						values: ['001', '002', '003'],
+						width: '200px',
+						class: 's'
+					});
+
+					listLe.render();
+
+					self.multiple = listLe;
+				},
+				onClose: (self) => {
+					console.log('Close', self);
+				}
+			});
+
+		modal.render();
 	});
 </script>

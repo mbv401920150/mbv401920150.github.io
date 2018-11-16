@@ -1,4 +1,8 @@
-		.fwv-modal-container {
+	i {
+		font-style : normal;
+	 }
+	
+	.fwv-modal-container {
             display: grid;
             grid-template-columns: 1fr 25px 25px;
             grid-template-rows: .25fr minmax(1fr, 2fr) .25fr;
@@ -45,18 +49,22 @@
             grid-column: 1 / 4;
             grid-row: 3 / 4;
             justify-self: right;
-            padding-top: 20px
+            /* padding-top: 20px */
         }
 
         .fwv-header-button {
             justify-self: right;
             align-self: flex-start;
             width: 1.5rem;
-            line-height: 1.5rem;
+			height: 100%;
             text-align: center;
             border-radius: 0.25rem;
             background-color: lightgray;
-        }
+		}
+		
+		.fwv-header-button > i {
+line-height: 1.5rem;
+		}
 
         .fwv-header-button:hover {
             background-color: darkgray;
